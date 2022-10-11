@@ -1,28 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
-//Este es un componente y es invisible para HTML
-function App(prop) {
+import react from "react";
+import { TodoCounter } from "./TodoCounter";
+import { TodoSearch } from "./TodoSearch.js";
+import { TodoList } from "./TodoList.js";
+import { TodoItem } from "./TodoItem.js";
+import { CreateTodoButton } from "./CreateTodoButton.js";
+// import './App.css';
+const todos=[
+  {text: 'Curso Avanzado Java SE', completed: false},
+  {text: 'Curso Introduccion a REACT', completed: false},
+  {text: 'Curso Git && GITHUB', completed: false},
+  {text: 'Curso de Agular de Cero a Experto', completed: false},
+];
+function App() {
   return (
-    //Este div es un elemento y es el que renderiza REACT
-    //Estamos usando una sintaxis JSX
-    <div className="App">
-      <header className="App-header">
-         
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React with Platzi
-        </a>
-        <span>{ prop.saludo }</span>
-      </header>
-    </div>
+   <react.Fragment>
+      <TodoCounter />    
+      <TodoSearch />
+      <TodoList>
+        {todos.map(todo =>(<TodoItem key={todo.text} text={todo.text} />))}
+      </TodoList>
+      <CreateTodoButton />      
+   </react.Fragment>
   );
 }
 
